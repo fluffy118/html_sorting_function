@@ -17,20 +17,86 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $("#addUser").click(function () {
+                $("#TableBody").html($("#TableBody").html() + "<tr><td class='col-id'>" + $("#UserID").val() + "</td><td class='col-name'>" + $("#UserName").val() + "</td><td class='col-occupation'>" + $("#UserOccupation").val() + "<td><tr>");
+                var newID = parseInt($("#UserID").val()) + 1;
+                $("#UserID").val(newID);
+                $("#UserName").val("");
+                $("#UserOccupation").val("");
+            });
+            /* $('select').on('change',function(){
+                
+            }); */
+
+            function sortByNumber(rows, selector, ascending){
+                rows.sort(function(a, b) {
+                    var numberA = parseInt($(selector, a).text(), 10);
+                    var numberB = parseInt($(selector, b).text(), 10);
+                    if (ascending)
+                        return numberA - numberB;
+                    else
+                        return numberB - numberA;
+                });
+                return rows;
+            }
+            function sortByText(rows, selector, ascending){
+                rows.sort(function(a, b) {
+                    var textA = $(selector, a).text();
+                    var textB = $(selector, b).text();
+                    if (ascending)
+                        return textA.localeCompare(textB);
+                    else
+                        return textB.localeCompare(textA);
+                });
+                return rows;
+            }
+            function sortBy(category){
+                var rows = $('table tbody tr').toArray();
+
+                switch (category) {
+                    case 'UserID':
+                        rows = sortByNumber(rows, 'td.col-id', true);
+                        break;
+                    case 'UserName':
+                        rows = sortByText(rows, 'td.col-name', true);
+                        break;
+                    case 'UserOccupation':
+                        rows = sortByText(rows, 'td.col-occupation', true);
+                        break;
+                    default:
+                        console.error('Undefined sort by category ' + category);
+                        break;
+                }
+                
+                for (var i = 0; i < rows.length; i++) {
+                    $('table tbody').append(rows[i]);
+                }
+            }
+
+            $("#sort").change(function () {
+                sortBy(this.value);
+            });
+
+        });
+    </script>
 
 </head>
 
 <body style="background-color:powderblue">
+    <!-- Title -->
     <div class="container-fluid">
         <div class="row">
             <h3>Sorting</h3>
         </div>
     </div>
 
+    <!-- User Input -->
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <input type="text" id="UserID" size=1 maxlength=3 disabled value=1  >
+                <input type="text" id="UserID" size=1 maxlength=3 disabled value=1>
                 <!-- <button type="button" onclick="sumToN()">Try it</button> -->
             </div>
             <div class="col-sm">
@@ -40,11 +106,12 @@
                 <input type="text" id="UserOccupation" placeholder="User Occupation">
             </div>
             <div class="col-sm">
-                <input type="button" value="Add" onclick="addUser()">
+                <!-- <input type="button" value="Add" onclick="addUser()"> -->
+                <!-- <input type="button" value="Add" id="addUser"> -->
+                <button type="button" id="addUser">Add</button>
             </div>
         </div>
     </div>
-
     <br>
 
     <!-- Sorting -->
@@ -63,9 +130,10 @@
         </div>
     </div>
 
+    <!-- Table -->
     <div class="container">
         <div class="row">
-            <table>
+            <table id="userTable">
                 <thead>
                     <tr>
                         <th>
@@ -92,43 +160,21 @@
         }
         loadID(); */
 
-        function addUser() {
+        /* function addUser() {
             var name = document.getElementById("UserName").value;
             var occupation = document.getElementById("UserOccupation").value;
             $("#TableBody").html($("#TableBody").html() + "<tr><td>" + $("#UserID").val() + "</td><td>" + $("#UserName").val() + "</td><td>" + $("#UserOccupation").val() + "<td><tr>");
             var newID = parseInt($("#UserID").val()) + 1;
-            /* $("#UserID").val() = newID;
-            $("#UserName").val() = "";
-            $("#UserOccupation").val() = ""; */
             document.getElementById("UserID").value = newID;
             document.getElementById("UserName").value = "";
             document.getElementById("UserOccupation").value = "";
-        }
+        } */
 
         /* function checkWebStorage(){
             if (typeof(Storage) !== "undefined") {
             alert("have");
             } else {
             alert("no");
-            }
-        } */
-
-        /* function clickCounter() {
-            if (typeof(Storage) !== "undefined")
-            {
-                if (sessionStorage.clickcount)
-                {
-                    sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
-                }
-                else
-                {
-                    sessionStorage.clickcount = 1;
-                }
-                document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
-            }
-            else
-            {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
             }
         } */
     </script>
