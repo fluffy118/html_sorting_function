@@ -2,12 +2,9 @@
 <html>
 
 <head>
-    <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Sorting</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -19,9 +16,8 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <style>
 
-    </style>
+
 </head>
 
 <body style="background-color:powderblue">
@@ -30,39 +26,112 @@
             <h3>Sorting</h3>
         </div>
     </div>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <input type="text">
+                <input type="text" id="UserID" size=1 maxlength=3 disabled value=1  >
                 <!-- <button type="button" onclick="sumToN()">Try it</button> -->
             </div>
             <div class="col-sm">
-                <input type="text">
+                <input type="text" id="UserName" placeholder="User Name">
             </div>
             <div class="col-sm">
-                <input type="text">
+                <input type="text" id="UserOccupation" placeholder="User Occupation">
             </div>
             <div class="col-sm">
-                <input type="button" value="Add">
+                <input type="button" value="Add" onclick="addUser()">
             </div>
         </div>
     </div>
+
     <br>
+
+    <!-- Sorting -->
     <div class="container">
         <div class="row">
             <div class="col-sm-1">
                 <p>Sort by: </p>
             </div>
-            <div class ="col-sm-1">
+            <div class="col-sm-1">
                 <select name="sort" id="sort">
                     <option value="UserID">User ID</option>
                     <option value="UserName">User Name</option>
-                    <option value="UserOcuupation">User Ocuupation</option>
+                    <option value="UserOccupation">User Occupation</option>
                 </select>
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            User ID
+                        </th>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            User Occupation
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="TableBody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        /* function loadID() {
+            var id = 1;
+            document.getElementById("UserID").value = id;
+        }
+        loadID(); */
+
+        function addUser() {
+            var name = document.getElementById("UserName").value;
+            var occupation = document.getElementById("UserOccupation").value;
+            $("#TableBody").html($("#TableBody").html() + "<tr><td>" + $("#UserID").val() + "</td><td>" + $("#UserName").val() + "</td><td>" + $("#UserOccupation").val() + "<td><tr>");
+            var newID = parseInt($("#UserID").val()) + 1;
+            /* $("#UserID").val() = newID;
+            $("#UserName").val() = "";
+            $("#UserOccupation").val() = ""; */
+            document.getElementById("UserID").value = newID;
+            document.getElementById("UserName").value = "";
+            document.getElementById("UserOccupation").value = "";
+        }
+
+        /* function checkWebStorage(){
+            if (typeof(Storage) !== "undefined") {
+            alert("have");
+            } else {
+            alert("no");
+            }
+        } */
+
+        /* function clickCounter() {
+            if (typeof(Storage) !== "undefined")
+            {
+                if (sessionStorage.clickcount)
+                {
+                    sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+                }
+                else
+                {
+                    sessionStorage.clickcount = 1;
+                }
+                document.getElementById("result").innerHTML = "You have clicked the button " + sessionStorage.clickcount + " time(s) in this session.";
+            }
+            else
+            {
+                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+            }
+        } */
+    </script>
 
 </body>
 
