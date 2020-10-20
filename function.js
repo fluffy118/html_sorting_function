@@ -1,7 +1,7 @@
 $(document).ready(function () {
     // Add User Button function
     $("#addUser").click(function () {
-        $("#TableBody").html($("#TableBody").html() + "<tr><td class='col-id'>" + $("#UserID").val() + "</td><td class='col-name'>" + $("#UserName").val() + "</td><td class='col-occupation'>" + $("#UserOccupation").val() + "</td></tr>");
+        $("#TableBody").html($("#TableBody").html() + "<tr><td class='col-id' width='33%' >" + $("#UserID").val() + "</td><td class='col-name' width='33%'>" + $("#UserName").val() + "</td><td class='col-occupation' width='33%'>" + $("#UserOccupation").val() + "</td></tr>");
         var newID = parseInt($("#UserID").val()) + 1;
         $("#UserID").val(newID);
         $("#UserName").val("");

@@ -5,8 +5,6 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Sorting Function</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,85 +16,69 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Functions for user input,add and sorting -->
-    <script src="function.js"></script> 
-
-    <style>
-        th {
-            padding: 5px;
-        }
-        td {
-            padding: 15px;
-            border: 1px solid black;
-        }
-    </style>
+    <script src="function.js"></script>
 
 </head>
 
 <body style="background-color:powderblue">
     <!-- Title -->
-    <div class="container-fluid">
-        <div class="row">
-            <h3>Sorting Function</h3>
-        </div>
+    <div class="row">
+        <h3>Sorting Function</h3>
     </div>
 
     <!-- User Input -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <label>User ID</label>
-                <input type="text" id="UserID" size=1 maxlength=3 disabled value=1>
-            </div>
-            <div class="col-sm">
-                <input type="text" id="UserName" placeholder="User Name">
-            </div>
-            <div class="col-sm">
-                <input type="text" id="UserOccupation" placeholder="User Occupation">
-            </div>
-            <div class="col-sm">
-                <button type="button" id="addUser">Add</button>
-            </div>
+    <div class="row">
+        <div class="col-sm">
+            <label>User ID</label>
+            <input type="text" id="UserID" size=1 maxlength=3 disabled value=1>
+        </div>
+        <div class="col-sm">
+            <input type="text" id="UserName" placeholder="User Name">
+        </div>
+        <div class="col-sm">
+            <input type="text" id="UserOccupation" placeholder="User Occupation">
+        </div>
+        <div class="col-sm">
+            <button type="button" id="addUser">Add</button>
         </div>
     </div>
+
     <br>
 
     <!-- Sorting Dropdown -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-1">
-                <p>Sort by: </p>
-            </div>
-            <div class="col-sm-1">
-                <select name="sort" id="sort">
-                    <option value="UserID">User ID</option>
-                    <option value="UserName">User Name</option>
-                    <option value="UserOccupation">User Occupation</option>
-                </select>
-            </div>
+    <div class="row">
+        <div class="col-sm-1">
+            <p>Sort by: </p>
+        </div>
+        <div class="col-sm-1">
+            <select name="sort" id="sort">
+                <option value="UserID">User ID</option>
+                <option value="UserName">User Name</option>
+                <option value="UserOccupation">User Occupation</option>
+            </select>
         </div>
     </div>
 
     <!-- Table -->
-    <div class="container">
-        <div class="row">
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            User ID
-                        </th>
-                        <th>
-                            User Name
-                        </th>
-                        <th>
-                            User Occupation
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="TableBody">
-                </tbody>
-            </table>
-        </div>
+    <div class="row">
+        <table width="100%" cellspacing="2" cellpadding="0" border="1" align="center">
+            <thead>
+                <tr>
+                    <th>
+                        User ID
+                    </th>
+                    <th>
+                        User Name
+                    </th>
+                    <th>
+                        User Occupation
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="TableBody">
+            </tbody>
+        </table>
     </div>
 </body>
+
 </html>
